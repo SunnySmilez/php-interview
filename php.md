@@ -67,3 +67,5 @@
 * apache的prefork是如何实现的
 
 * fastcgi如何进行进程管理的
+
+* 上传a.jpg为什么会返回多个url类似于：a1.test.com/tmp/a.jpg;a2.test.com/tmp/a.jpg;a3.test.com/tmp/a.jpg
