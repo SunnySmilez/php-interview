@@ -67,9 +67,3 @@
 * apache的prefork是如何实现的
 
 * fastcgi如何进行进程管理的
-
-* apache的模块是如何动态加载的（不重启apache的前提下）
-
-* apache的运行过程
-
-* cgi的运行原理
