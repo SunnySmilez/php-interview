@@ -75,3 +75,9 @@
 * cgi的运行原理
 
 * 上传a.jpg为什么会返回多个url类似于：a1.test.com/tmp/a.jpg;a2.test.com/tmp/a.jpg;a3.test.com/tmp/a.jpg
+
+* 为什么说php在web开发上具有优势
+
+* 静态变量，预定义变量，常量的区别，结合php生命周期聊聊
+
+* 用c语言实现一个简单的php语言（包含：数组结构，函数，类等最简单的功能）
