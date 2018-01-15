@@ -44,5 +44,4 @@
 
 * dict结构中的privdata和dictht中的sizemask有什么用
 
-
-
+* dict是如何进行遍历的（如果dict进行了rehash或者dict结构发生了变化呢）
