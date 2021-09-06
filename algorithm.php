@@ -204,8 +204,53 @@ class algorithm {
 
         return $data;
     }
+
+    function slidingWindow($s, $t) {
+        $need=[];//查找的字符数组
+        $window=[];//窗口内的字符
+        //$left，$right左右窗口指针，$match匹配的字符数，$start开始的位置
+        $left=$right=$match=$start=0;
+        //截取的长度
+        $len=PHP_INT_MAX;
+        for ($i = 0; $i < strlen($t); $i++) { //将查找的字符转出数组，并统计出每个字符出现的次数
+            isset($need[$t[$i]]) ? $need[$t[$i]]++ : $need[$t[$i]]=1;
+        }
+
+        while($right<strlen($s)) {//指针右移
+            $rightStr = $s[$right];
+            $right++;
+            if(isset($need[$rightStr])) {
+                isset($window[$rightStr]) ? $window[$rightStr]++ : $window[$rightStr]=1;
+                if ($window[$rightStr] == $need[$rightStr]) {
+                    $match++;
+                }
+            }
+
+            while($match == count($need)) {//当匹配的字符和需要的字符相当的时候，也就是全部都找到的时候
+                if ($right - $left < $len) {//计算出开始位置及需要裁剪的长度
+                    $start = $left;
+                    $len = $right-$left;
+                }
+
+                $leftStr=$s[$left];
+                $left++;//左侧指针向右移动（缩小窗口）
+
+                if (isset($need[$leftStr])) {
+                    if ($window[$leftStr] == $need[$leftStr]) {
+                        $match--;
+                    }
+
+                    $window[$leftStr]--;
+                }
+            }
+        }
+
+        return $len == PHP_INT_MAX ? "" : substr($s, $start, $len);
+    }
 }
 
 /*$data = array(5,1,3,2,4);
 $result = (new algorithm())->insert2($data);
-var_dump($result);exit;*/
+var_dump($result);
+var_dump((new algorithm())->slidingWindow("aaaabcdadedgrd", "abe"));
+exit;*/
