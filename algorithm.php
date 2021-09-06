@@ -205,6 +205,7 @@ class algorithm {
         return $data;
     }
 
+    //给定一个字符串S，一个字符串T，请在字符串S里面找出：包含T所有字母的最小子串（滑动窗口）
     function slidingWindow($s, $t) {
         $need=[];//查找的字符数组
         $window=[];//窗口内的字符
