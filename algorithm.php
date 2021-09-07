@@ -248,10 +248,67 @@ class algorithm {
 
         return $len == PHP_INT_MAX ? "" : substr($s, $start, $len);
     }
+
+    //给定一个M*N的格子或棋盘，从左下角走到右上角的走法总数（每次只能向右或向上移动一个方格边长的距离）
+    function allway($m, $n) {
+        if($m==0 && $n==0) {
+            return 0;
+        }
+
+        if($m==1 || $n==1) {
+            return 1;
+        }
+
+        return $this->allway($m, $n-1)+$this->allway($m-1, $n);
+    }
+
+    //现在给你输入一个二维数组grid，其中的元素都是非负整数，现在你站在左上角，只能向右或者向下移动，需要到达右下角。现在请你计算，经过的路径和最小是多少？
+    /*
+    grad = array(
+        array(
+            1,3,1
+        ),
+        array(
+            1,5,1
+        ),
+        array(
+            4,2,1
+        )
+    );
+    */
+    function minPathDp($grid, $i, $j) {
+        if ($i == 0 && $j == 0) {
+            return $grid[0][0];
+        }
+
+        if ($i<0 || $j<0) {
+            return PHP_INT_MAX;
+        }
+
+        return min($this->minPathDp($grid, $i-1, $j), $this->minPathDp($grid, $i, $j-1))+ $grid[$i][$j];
+    }
 }
 
 /*$data = array(5,1,3,2,4);
 $result = (new algorithm())->insert2($data);
 var_dump($result);
 var_dump((new algorithm())->slidingWindow("aaaabcdadedgrd", "abe"));
+var_dump((new algorithm())->allway(2,2));
 exit;*/
+/*
+$grad = array(
+    array(
+        1,3,1
+    ),
+    array(
+        1,5,1
+    ),
+    array(
+        4,2,1
+    )
+);
+
+var_dump((new algorithm())->minPathDp($grad, 0, 0));*/
+
+
+
